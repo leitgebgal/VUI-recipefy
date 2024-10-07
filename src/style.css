@@ -1,0 +1,16 @@
+* {
+  font-family: Roboto, sans-serif;  
+}
+
+html { overflow-y: auto !important}
+
+#app {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body {
+  background-color: #c9efc7;
+}
