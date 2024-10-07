@@ -11,6 +11,7 @@ export default defineConfig({
     vuetify()
   ],
   server: {
+    host: '0.0.0.0', // Required by Render, to be accessible from outside
     port: process.env.PORT || 3000,
   }
 })
