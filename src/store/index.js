@@ -9,6 +9,12 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, up
 import { ref, getDownloadURL } from 'firebase/storage'
 import { collection, doc, getDoc, getDocs, setDoc, updateDoc } from 'firebase/firestore'
 
+import browsee from '@browsee/web-sdk'
+
+browsee.init({
+    apiKey: '85f3c55246869f88b58013135711a5c153ab23373bc6e762',
+  })
+
 const store = createStore({
     state: {
         usersList: [],
@@ -98,6 +104,10 @@ const store = createStore({
                     // Add user to state
                     commit(SET_USER, credential.user);
                     commit(CLEAR_ERROR);
+
+                    browsee.track('user-login', {
+                        email: payload.email,
+                    });
                 })
                 .catch((error) => {
                     commit(SET_ERROR, error.code);
