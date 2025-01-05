@@ -137,29 +137,42 @@
   };
   
   const addComment = () => {
-    const commentPayload = {
-      title: recipe.value.title,
-      comment: {
-        createdBy: user.value.displayName,
-        createdOn: new Date(),
-        comment: comment.value
-      }
-    };
-  
-    store.dispatch("recipe/addComment", commentPayload);
+  // Pošiljanje dogodka v Hotjar
+  window.hj('event', 'comment_added', {
+    recipeTitle: recipe.value.title,
+    comment: comment.value,
+    user: user.value.displayName
+  });
+
+  const commentPayload = {
+    title: recipe.value.title,
+    comment: {
+      createdBy: user.value.displayName,
+      createdOn: new Date(),
+      comment: comment.value
+    }
   };
+
+  store.dispatch("recipe/addComment", commentPayload);
+};
   
   const addRating = () => {
-    const ratingPayload = {
-      title: recipe.value.title,
-      rating: {
-        user: user.value.displayName,
-        value: selectedRating.value
-      }
-    };
-  
-    store.dispatch("recipe/addLike", ratingPayload);
+  // Pošiljanje dogodka v Hotjar
+  window.hj('event', 'recipe_rating_submitted', {
+    recipeTitle: recipe.value.title,
+    rating: selectedRating.value
+  });
+
+  const ratingPayload = {
+    title: recipe.value.title,
+    rating: {
+      user: user.value.displayName,
+      value: selectedRating.value
+    }
   };
+
+  store.dispatch("recipe/addLike", ratingPayload);
+};
   
   const toggleIngredients = () => {
     ingredientsVisible.value = !ingredientsVisible.value;
