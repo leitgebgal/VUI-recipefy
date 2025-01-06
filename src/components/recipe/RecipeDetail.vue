@@ -108,6 +108,14 @@ const selectRating = (rating) => {
 }
 
 const addComment = () => {
+  // Pošiljanje dogodka v Hotjar
+  console.log("hotjar event: comment_added A");
+  hj('event', 'comment_added_A', {
+    recipeTitle: recipe.value.title,
+    comment: comment.value,
+    user: user.value.displayName
+  });
+
   const commentPayload = {
     title: recipe.value.title,
     comment: {
@@ -121,6 +129,13 @@ const addComment = () => {
 }
 
 const addRating = () => {
+  // Pošiljanje dogodka v Hotjar
+  console.log("hotjar event: recipe_rating_submitted A");
+  hj('event', 'recipe_rating_submitted_A', {
+    recipeTitle: recipe.value.title,
+    rating: selectedRating.value
+  });
+
   const ratingPayload = {
     title: recipe.value.title,
     rating: {

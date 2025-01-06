@@ -14,6 +14,26 @@ function logOut(){
   router.push('/home');
 }
 
+const dispatchHotjarEventA = () => {
+  // Pošiljanje dogodka v Hotjar
+  console.log("hotjar event: accessed home A");
+  hj('event', 'accessed_home_A', {
+    home: "Home A"
+  });
+
+  router.push('/home');
+}
+
+const dispatchHotjarEventB = () => {
+  // Pošiljanje dogodka v Hotjar
+  console.log("hotjar event: accessed home B");
+  hj('event', 'accessed_home_B', {
+    home: "Home B"
+  });
+
+  router.push('/newHome');
+}
+
 </script>
 
 <template>
@@ -28,14 +48,14 @@ function logOut(){
       ></v-img>
       <v-spacer></v-spacer>
       <template v-if="!user">
-        <v-btn class="mx-2" @click="$router.push('/home')">Home</v-btn>
-        <v-btn class="mx-2" @click="$router.push('/newHome')">New Home</v-btn>
+        <v-btn class="mx-2" @click="dispatchHotjarEventA">Home</v-btn>
+        <v-btn class="mx-2" @click="dispatchHotjarEventB">New Home</v-btn>
         <v-btn class="mx-2" @click="$router.push('/login')">Login</v-btn>
         <v-btn class="mx-2" @click="$router.push('/signup')">Signup</v-btn>
       </template>
       <template v-else-if="user && user.email != 'admin@gmail.com'">
-            <v-btn class="mx-2" @click="$router.push('/home')">Home</v-btn>
-            <v-btn class="mx-2" @click="$router.push('/newHome')">New Home</v-btn>
+            <v-btn class="mx-2" @click="dispatchHotjarEventA">Home</v-btn>
+            <v-btn class="mx-2" @click="dispatchHotjarEventB">New Home</v-btn>
             <v-btn class="mx-2" @click="$router.push('/profile')">Profile</v-btn> 
             <v-btn class="mx-2" @click="$router.push('/recipes')">My Recipes</v-btn>
             <v-btn v-if="user.email == 'admin@gmail.com'" class="mx-2" @click="$router.push('/admin')">Admin</v-btn>
@@ -44,8 +64,8 @@ function logOut(){
         <v-btn class="mx-2" @click="logOut">Logout</v-btn>
       </template>
       <template v-else>
-        <v-btn class="mx-2" @click="$router.push('/home')">Home</v-btn>
-        <v-btn class="mx-2" @click="$router.push('/newHome')">New Home</v-btn>
+        <v-btn class="mx-2" @click="dispatchHotjarEventA">Home</v-btn>
+        <v-btn class="mx-2" @click="dispatchHotjarEventB">New Home</v-btn>
         <v-btn class="mx-2" @click="$router.push('/admin')">Admin</v-btn>
         <v-btn class="mx-2" @click="logOut">Logout</v-btn>
       </template>

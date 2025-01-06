@@ -138,7 +138,8 @@
   
   const addComment = () => {
   // Pošiljanje dogodka v Hotjar
-  window.hj('event', 'comment_added', {
+  console.log("hotjar event: comment_added B");
+  hj('event', 'comment_added_B', {
     recipeTitle: recipe.value.title,
     comment: comment.value,
     user: user.value.displayName
@@ -158,7 +159,8 @@
   
   const addRating = () => {
   // Pošiljanje dogodka v Hotjar
-  window.hj('event', 'recipe_rating_submitted', {
+  console.log("hotjar event: recipe_rating_submitted B");
+  hj('event', 'recipe_rating_submitted_B', {
     recipeTitle: recipe.value.title,
     rating: selectedRating.value
   });
