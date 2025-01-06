@@ -17,9 +17,7 @@ function logOut(){
 const dispatchHotjarEventA = () => {
   // Pošiljanje dogodka v Hotjar
   console.log("hotjar event: accessed home A");
-  hj('event', 'accessed_home_A', {
-    home: "Home A"
-  });
+  hj('event', 'accessed_home_A');
 
   router.push('/home');
 }
@@ -27,9 +25,7 @@ const dispatchHotjarEventA = () => {
 const dispatchHotjarEventB = () => {
   // Pošiljanje dogodka v Hotjar
   console.log("hotjar event: accessed home B");
-  hj('event', 'accessed_home_B', {
-    home: "Home B"
-  });
+  hj('event', 'accessed_home_B');
 
   router.push('/newHome');
 }

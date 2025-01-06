@@ -117,6 +117,10 @@
   }
   
   async function fetchRecipe(title){
+      // Pošiljanje dogodka v Hotjar
+      console.log("hotjar event: recipe detail accessed B");
+      hj('event', 'recipe_detail_accessed_B');
+      
       router.push({
           name: 'newRecipeDetail',
           params: { title: title }
