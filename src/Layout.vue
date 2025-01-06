@@ -29,11 +29,13 @@ function logOut(){
       <v-spacer></v-spacer>
       <template v-if="!user">
         <v-btn class="mx-2" @click="$router.push('/home')">Home</v-btn>
+        <v-btn class="mx-2" @click="$router.push('/newHome')">New Home</v-btn>
         <v-btn class="mx-2" @click="$router.push('/login')">Login</v-btn>
         <v-btn class="mx-2" @click="$router.push('/signup')">Signup</v-btn>
       </template>
       <template v-else-if="user && user.email != 'admin@gmail.com'">
             <v-btn class="mx-2" @click="$router.push('/home')">Home</v-btn>
+            <v-btn class="mx-2" @click="$router.push('/newHome')">New Home</v-btn>
             <v-btn class="mx-2" @click="$router.push('/profile')">Profile</v-btn> 
             <v-btn class="mx-2" @click="$router.push('/recipes')">My Recipes</v-btn>
             <v-btn v-if="user.email == 'admin@gmail.com'" class="mx-2" @click="$router.push('/admin')">Admin</v-btn>
@@ -43,6 +45,7 @@ function logOut(){
       </template>
       <template v-else>
         <v-btn class="mx-2" @click="$router.push('/home')">Home</v-btn>
+        <v-btn class="mx-2" @click="$router.push('/newHome')">New Home</v-btn>
         <v-btn class="mx-2" @click="$router.push('/admin')">Admin</v-btn>
         <v-btn class="mx-2" @click="logOut">Logout</v-btn>
       </template>
