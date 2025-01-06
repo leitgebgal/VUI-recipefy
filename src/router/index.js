@@ -10,6 +10,11 @@ const routes = [
             {
                 path: '/home',
                 name: 'home',
+                component: () => import('../components/Home.vue'),
+            },
+            {
+                path: '/newHome',
+                name: 'newHome',
                 component: () => import('../components/NewHome.vue'),
             },
             {
@@ -36,6 +41,11 @@ const routes = [
             {
                 path: '/recipeDetail/:title',
                 name: 'recipeDetail',
+                component: () => import('../components/recipe/RecipeDetail.vue')
+            },
+            {
+                path: '/newRecipeDetail/:title',
+                name: 'newRecipeDetail',
                 component: () => import('../components/recipe/NewRecipeDetail.vue')
             },
             {

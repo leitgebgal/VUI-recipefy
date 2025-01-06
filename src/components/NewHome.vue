@@ -118,7 +118,7 @@
   
   async function fetchRecipe(title){
       router.push({
-          name: 'recipeDetail',
+          name: 'newRecipeDetail',
           params: { title: title }
       })
   }
